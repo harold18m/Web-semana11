@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Recepción de Formulario</title>
+  <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="m-8">
+<div class="text-center">
+  <h1 class="text-2xl font-bold">Datos de Registro</h1>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600">Numero de documento:</label>
+      <p th:text="${form.numeroDeDocumento}" class="mt-1 p-2 border rounded-md w-full"></p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600">Apellido Paterno:</label>
+      <p th:text="${form.apellidoPaterno}" class="mt-1 p-2 border rounded-md w-full"></p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600">Apellido Materno:</label>
+      <p th:text="${form.apellidoMaterno}" class="mt-1 p-2 border rounded-md w-full"></p>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600">Nombres:</label>
+      <p th:text="${form.nombres}" class="mt-1 p-2 border rounded-md w-full"></p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600">Fecha de nacimiento:</label>
+      <p th:text="${form.fechaNacimiento}" class="mt-1 p-2 border rounded-md w-full"></p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600">Sexo:</label>
+      <p th:text="${form.sexo}" class="mt-1 p-2 border rounded-md w-full"></p>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600">Estado civil:</label>
+      <p th:text="${form.estadoCivil}" class="mt-1 p-2 border rounded-md w-full"></p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600">Situacion laboral:</label>
+      <p th:text="${form.situacionLaboral}" class="mt-1 p-2 border rounded-md w-full"></p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600">RUC del Empleador:</label>
+      <p th:text="${form.empleadorRUC}" class="mt-1 p-2 border rounded-md w-full"></p>
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+    <a href="/formularioRegistro" class="px-4 py-2 bg-blue-500 text-white rounded-md">Realizar nuevo Registro</a>
+  </div>
+</div>
+</body>
+</html>

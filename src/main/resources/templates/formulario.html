@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Solicitud de nueva Tarjeta BCP</title>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="m-8">
+<div class="text-center">
+    <h1 class="text-2xl font-bold">Solicitud de nueva Tarjeta BCP</h1>
+    <form th:action="@{/formularioRegistro}" th:object="${form}" method="POST" class="mt-4 mx-auto max-w-md">
+
+        <!-- Número de Documento -->
+        <div class="mb-4 flex items-center">
+            <label class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">Tipo de Documento:</label>
+            <div class="w-1/2">
+                <input type="radio" name="TipoDocumento" class="mt-1 p-2 border rounded-md" id="formGroupExampleInputDNI" value="DNI" />
+                <label for="formGroupExampleInputDNI" class="mr-2">DNI</label>
+
+                <input type="radio" name="TipoDocumento" class="mt-1 p-2 border rounded-md" id="formGroupExampleInputCarnet" value="CARNET DE EXTRANJERIA" />
+                <label for="formGroupExampleInputCarnet">Carnet de extranjería</label>
+            </div>
+        </div>
+
+        <!-- Número de Documento -->
+        <div class="mb-4 flex items-center">
+            <label for="formGroupExampleInput1" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">N° de Documento:</label>
+            <div class="w-1/2">
+                <input type="text" th:field="*{numeroDeDocumento}" class="mt-1 p-2 border rounded-md w-full" id="formGroupExampleInput1" />
+                <p th:if="${#fields.hasErrors('numeroDeDocumento')}" th:errors="*{numeroDeDocumento}" class="text-red-500"></p>
+            </div>
+        </div>
+
+        <!-- Apellido Paterno -->
+        <div class="mb-4 flex items-center">
+            <label for="formGroupExampleInput2" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">Apellido Paterno:</label>
+            <div class="w-1/2">
+                <input type="text" th:field="*{apellidoPaterno}" class="mt-1 p-2 border rounded-md w-full" id="formGroupExampleInput2" />
+                <p th:if="${#fields.hasErrors('apellidoPaterno')}" th:errors="*{apellidoPaterno}" class="text-red-500"></p>
+            </div>
+        </div>
+
+        <!-- Apellido Materno -->
+        <div class="mb-4 flex items-center">
+            <label for="formGroupExampleInput3" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">Apellido Materno:</label>
+            <div class="w-1/2">
+                <input type="text" th:field="*{apellidoMaterno}" class="mt-1 p-2 border rounded-md w-full" id="formGroupExampleInput3" />
+                <p th:if="${#fields.hasErrors('apellidoMaterno')}" th:errors="*{apellidoMaterno}" class="text-red-500"></p>
+            </div>
+        </div>
+
+        <!-- Nombres -->
+        <div class="mb-4 flex items-center">
+            <label for="formGroupExampleInput4" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">Nombres:</label>
+            <div class="w-1/2">
+                <input type="text" th:field="*{nombres}" class="mt-1 p-2 border rounded-md w-full" id="formGroupExampleInput4" />
+                <p th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}" class="text-red-500"></p>
+            </div>
+        </div>
+        <!-- Fecha de Nacimiento -->
+        <div class="mb-4 flex items-center">
+            <label for="formGroupExampleInputFechaNacimiento" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">Fecha de Nacimiento:</label>
+            <div class="w-1/2">
+                <input type="date" th:field="*{fechaNacimiento}" class="mt-1 p-2 border rounded-md w-full" id="formGroupExampleInputFechaNacimiento" />
+                <p th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" class="text-red-500"></p>
+            </div>
+        </div>
+        <!-- Sexo -->
+        <div class="mb-4 flex items-center">
+            <label for="formGroupExampleInput5" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">Sexo:</label>
+            <div class="w-1/2">
+                <select th:field="*{sexo}" class="mt-1 p-2 border rounded-md w-full" id="formGroupExampleInput5">
+                    <option th:each="elemento: ${T(com.tecsup.lab11.DTO.OpcionesSexo).values()}" th:value="${elemento}" th:text="${elemento.getLabel()}" />
+                </select>
+                <p th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}" class="text-red-500"></p>
+            </div>
+        </div>
+
+        <!-- Estado Civil -->
+        <div class="mb-4 flex items-center">
+            <label for="formGroupExampleInput6" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">Estado Civil:</label>
+            <div class="w-1/2">
+                <select th:field="*{estadoCivil}" class="mt-1 p-2 border rounded-md w-full" id="formGroupExampleInput6">
+                    <option th:each="elemento: ${form.getEstadoCivils()}" th:value="${elemento}" th:text="${elemento.getLabel()}" />
+                </select>
+                <p th:if="${#fields.hasErrors('estadoCivil')}" th:errors="*{estadoCivil}" class="text-red-500"></p>
+            </div>
+        </div>
+
+        <!-- Situación Laboral -->
+        <div class="mb-4 flex items-center">
+            <label for="formGroupExampleInput7" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">Situación Laboral:</label>
+            <div class="w-1/2">
+                <select th:field="*{situacionLaboral}" class="mt-1 p-2 border rounded-md w-full" id="formGroupExampleInput7">
+                    <option th:each="elemento: ${form.getSituacionLaborals()}" th:value="${elemento}" th:text="${elemento.getLabel()}" />
+                </select>
+                <p th:if="${#fields.hasErrors('situacionLaboral')}" th:errors="*{situacionLaboral}" class="text-red-500"></p>
+            </div>
+        </div>
+
+        <!-- RUC del empleador -->
+        <div class="mb-4 flex items-center">
+            <label for="formGroupExampleInput8" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">RUC del empleador:</label>
+            <div class="w-1/2">
+                <input type="text" th:field="*{empleadorRUC}" class="mt-1 p-2 border rounded-md w-full" id="formGroupExampleInput8" />
+                <p th:if="${#fields.hasErrors('EmpleadorRUC')}" th:errors="*{empleadorRUC}" class="text-red-500"></p>
+            </div>
+        </div>
+
+        <!-- Términos y condiciones -->
+        <div class="mb-4 flex items-center">
+            <label for="terminos" class="block text-sm font-medium text-gray-600 w-1/2 mr-1 text-right">Términos y condiciones</label>
+            <div class="w-1/2">
+                <input type="checkbox" id="terminos" name="condiciones" value="Acepto">
+                <label for="terminos" class="ml-2">Acepto</label>
+            </div>
+        </div>
+
+        <!-- Botones de envío -->
+        <div class="mt-4">
+            <input type="submit" value="Solicitar nueva Tarjeta" class="px-4 py-2 bg-blue-500 text-white rounded-md mr-2" />
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
